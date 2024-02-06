@@ -68,7 +68,6 @@ fun CurrencyConverterScreen(
             .fillMaxSize()
             .padding(16.dp)
             .verticalScroll(rememberScrollState())
-            .height(IntrinsicSize.Min)
     ) {
         // Amount input field
         OutlinedTextField(
