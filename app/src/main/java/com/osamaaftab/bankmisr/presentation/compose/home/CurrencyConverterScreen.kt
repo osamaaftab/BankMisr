@@ -6,10 +6,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -57,11 +55,14 @@ fun CurrencyConverterScreen(
 
     val context = LocalContext.current
 
+    val selectedFromDataStateValue  = currencyViewModel.getSelectedFromDataState.collectAsState().value
+    val selectedToDataStateValue  = currencyViewModel.getSelectedToDataState.collectAsState().value
+
     var amount by remember { mutableStateOf("1.0") }
 
-    var selectedFromCurrency by remember { mutableStateOf(CurrencyHolder()) }
+    var selectedFromCurrency by remember { mutableStateOf(selectedFromDataStateValue) }
 
-    var selectedToCurrency by remember { mutableStateOf(CurrencyHolder()) }
+    var selectedToCurrency by remember { mutableStateOf(selectedToDataStateValue) }
 
     Column(
         modifier = Modifier

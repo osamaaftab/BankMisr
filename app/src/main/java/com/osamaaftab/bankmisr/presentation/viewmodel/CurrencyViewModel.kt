@@ -9,6 +9,7 @@ import com.osamaaftab.bankmisr.domain.model.ErrorModel
 import com.osamaaftab.bankmisr.domain.model.SymbolsModel
 import com.osamaaftab.bankmisr.domain.usecase.ConvertCurrencyUseCase
 import com.osamaaftab.bankmisr.domain.usecase.GetSymbolsUseCase
+import com.osamaaftab.bankmisr.presentation.holder.CurrencyHolder
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -22,6 +23,11 @@ class CurrencyViewModel(
     private val symbolsDataState = MutableStateFlow<MutableMap<String, String>>(mutableMapOf())
 
     private val conversionDataState = MutableStateFlow("")
+
+    private val selectedFromDataState = MutableStateFlow(CurrencyHolder())
+
+    private val selectedToDataState = MutableStateFlow(CurrencyHolder())
+
 
 
     init {
@@ -64,6 +70,8 @@ class CurrencyViewModel(
     }
 
     fun convertCurrency(convertModel: ConvertModel) {
+        selectedFromDataState.value = convertModel.fromCurrency
+        selectedToDataState.value = convertModel.toCurrency
         convertCurrencyUseCase.invoke(viewModelScope, convertModel,
             onSuccess = {
                 getCurrencyConversionSuccess(it)
@@ -77,4 +85,9 @@ class CurrencyViewModel(
     val getConversionDataState: StateFlow<String> = conversionDataState
 
     val getErrorState: StateFlow<Pair<Boolean, String>> = onErrorShowState
+
+    val getSelectedFromDataState : StateFlow<CurrencyHolder> = selectedFromDataState
+
+    val getSelectedToDataState : StateFlow<CurrencyHolder> = selectedToDataState
+
 }
