@@ -29,8 +29,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.osamaaftab.bankmisr.R
 import com.osamaaftab.bankmisr.domain.model.ConvertModel
 import com.osamaaftab.bankmisr.presentation.holder.CurrencyHolder
 import com.osamaaftab.bankmisr.presentation.viewmodel.CurrencyViewModel
@@ -55,8 +57,9 @@ fun CurrencyConverterScreen(
 
     val context = LocalContext.current
 
-    val selectedFromDataStateValue  = currencyViewModel.getSelectedFromDataState.collectAsState().value
-    val selectedToDataStateValue  = currencyViewModel.getSelectedToDataState.collectAsState().value
+    val selectedFromDataStateValue =
+        currencyViewModel.getSelectedFromDataState.collectAsState().value
+    val selectedToDataStateValue = currencyViewModel.getSelectedToDataState.collectAsState().value
 
     var amount by remember { mutableStateOf("1.0") }
 
@@ -85,7 +88,7 @@ fun CurrencyConverterScreen(
                     amount
                 )
             },
-            label = { Text("Amount") },
+            label = { Text(stringResource(R.string.amount_label)) },
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
             modifier = Modifier
                 .fillMaxWidth()
@@ -107,7 +110,7 @@ fun CurrencyConverterScreen(
                     amount
                 )
             },
-            label = "From"
+            label = stringResource(R.string.from_label)
         )
 
         // Swap button
@@ -128,7 +131,7 @@ fun CurrencyConverterScreen(
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
         ) {
-            Text("Swap Currencies")
+            Text(stringResource(R.string.swap_currencies_label))
         }
 
         // To currency dropdown
@@ -146,14 +149,14 @@ fun CurrencyConverterScreen(
                     amount
                 )
             },
-            label = "To"
+            label = stringResource(R.string.to_label)
         )
 
         // Converted value display
         OutlinedTextField(
             value = currencyViewModel.getConversionDataState.collectAsState().value,
             onValueChange = {},
-            label = { Text("Converted Value") },
+            label = { Text(stringResource(R.string.converted_value_label)) },
             readOnly = true,
             modifier = Modifier
                 .fillMaxWidth()
@@ -175,7 +178,8 @@ private fun validateAndConvert(
 ) {
     if (selectedFromCurrency.code.isNotEmpty() && selectedToCurrency.code.isNotEmpty()) {
         if (selectedFromCurrency.code == selectedToCurrency.code) {
-            Toast.makeText(context, "To and From currencies are same", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.currency_selection_error_label, Toast.LENGTH_SHORT)
+                .show()
         } else {
             convertCurrency(
                 currencyViewModel, amount.toDouble(), selectedFromCurrency,
@@ -235,11 +239,11 @@ fun CurrencyDropdown(
                                     .padding(8.dp)
                             )
                         })
-                    }
                 }
             }
         }
     }
+}
 
 // Function to convert currency
 fun convertCurrency(

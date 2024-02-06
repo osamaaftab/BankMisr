@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Bankmisr</string>
+    <string name="currency_selection_error_label">To and From currencies are same</string>
+    <string name="converted_value_label">Converted Value</string>
+    <string name="swap_currencies_label">"Swap Currencies"</string>
+    <string name="to_label">To</string>
+    <string name="from_label">From</string>
+    <string name="amount_label">Amount</string>
 </resources>
