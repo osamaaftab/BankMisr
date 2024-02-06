@@ -8,7 +8,6 @@ import org.koin.dsl.module
 
 val RepositoryModule = module {
     single { providePropertyRepository(get(), get()) }
-
 }
 
 fun providePropertyRepository(

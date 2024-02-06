@@ -54,7 +54,7 @@ class CurrencyViewModel(
         onErrorShowState.value = Pair(true, "${errorModel?.errorStatus?.name}")
     }
 
-    private fun loadCurrencySymbols() {
+    fun loadCurrencySymbols() {
         getSymbolsUseCase.invoke(viewModelScope, null,
             onSuccess = {
                 getSymbolsSuccess(it)
