@@ -37,3 +37,10 @@ https://github.com/osamaaftab/Nutmeg-home-take-assignment-2
 
 # Author
 Osama Aftab
+
+<b>Owns a lib published on Android Arsenal</b>
+visit: https://android-arsenal.com/details/1/8433
+
+<b>Official Contributor at Glide Repository </b>
+visit: https://github.com/bumptech/glide/graphs/contributors
+
