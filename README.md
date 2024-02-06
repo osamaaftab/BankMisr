@@ -26,7 +26,12 @@ Data Module: Manages data access, including communication with the API.
 
 API Reference:
 
-The app retrieves data, from the fixer API. For more details, visit: https://fixer.io/documentation
+The app retrieves data, from the fixer API. For more details, visit: https://fixer.io/documentation.
+
+NOTE : 
+As requested to use hilt but instead I used koin for a reason that I wanted to do UI testing for which koin makes thing easy but due to time constraint I couldn't able to implement the UI testing however I am putting up some of the links to my other repository which has the technologies requested to access.
+https://github.com/osamaaftab/teya
+https://github.com/osamaaftab/Nutmeg-home-take-assignment-2
 
 # Author
 Osama Aftab
