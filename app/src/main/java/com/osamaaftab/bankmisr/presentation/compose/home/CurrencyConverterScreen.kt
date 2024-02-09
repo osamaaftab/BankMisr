@@ -120,11 +120,9 @@ fun CurrencyConverterScreen(
                 selectedFromCurrency = selectedToCurrency
                 selectedToCurrency = tempCurrency
 
-                convertCurrency(
-                    currencyViewModel,
-                    amount.toDouble(),
-                    selectedFromCurrency,
-                    selectedToCurrency
+                validateAndConvert(
+                    context, selectedFromCurrency, selectedToCurrency, currencyViewModel,
+                    amount
                 )
             },
             modifier = Modifier
