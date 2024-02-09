@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.osamaaftab.bankmisr.domain.model.ConvertModel
 import com.osamaaftab.bankmisr.domain.model.ErrorModel
-import com.osamaaftab.bankmisr.domain.model.SymbolsModel
+import com.osamaaftab.bankmisr.domain.model.SymbolResponseModel
 import com.osamaaftab.bankmisr.domain.usecase.ConvertCurrencyUseCase
 import com.osamaaftab.bankmisr.domain.usecase.GetSymbolsUseCase
 import com.osamaaftab.bankmisr.presentation.holder.CurrencyHolder
@@ -34,7 +34,7 @@ class CurrencyViewModel(
         loadCurrencySymbols()
     }
 
-    private fun getSymbolsSuccess(responseModel: SymbolsModel) {
+    private fun getSymbolsSuccess(responseModel: SymbolResponseModel) {
         Log.i(ContentValues.TAG, "result : ${responseModel.symbols}")
         symbolsDataState.value = responseModel.symbols ?: mutableMapOf()
         onErrorShowState.value = Pair(false, "")
